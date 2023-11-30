@@ -28,7 +28,10 @@ const DetailOrder = ({ navigation }) => {
   }, [navigation]);
   return (
     <View style={{ flex: 1 }}>
-      <Pressable style={styles.customerBox}>
+      <Pressable
+        style={styles.customerBox}
+        onPress={() => navigation.navigate("Customers")}
+      >
         <TextRegular text={"Customer"} />
         <Ionicons name="arrow-forward" size={20} />
       </Pressable>

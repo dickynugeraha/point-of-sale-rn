@@ -11,7 +11,7 @@ export default Input = ({ title, placeholder, text, setText, attribute }) => {
         value={text}
         onChangeText={(val) => setText(val)}
         style={styles.input}
-        selectionColor={COLORS.TEXT_BLACK}
+        selectionColor={COLORS.GREY_2}
         {...attribute}
       />
     </View>
