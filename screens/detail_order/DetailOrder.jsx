@@ -48,7 +48,7 @@ const DetailOrder = ({ navigation }) => {
             )}
           />
         </View>
-        <View style={{ marginTop: SIZES.small, maxHeight: deviceHight * 0.4 }}>
+        <View style={{ marginTop: SIZES.small, maxHeight: deviceHight * 0.45 }}>
           <OrderList dataOrder={dataOrder} />
         </View>
         <Pressable
@@ -56,6 +56,7 @@ const DetailOrder = ({ navigation }) => {
             styles.customerBox,
             { backgroundColor: "transparent", paddingHorizontal: 0 },
           ]}
+          onPress={()=>navigation.navigate("Diskon")}
         >
           <TextRegular text={"Diskon"} />
           <Ionicons name="arrow-forward" size={20} />

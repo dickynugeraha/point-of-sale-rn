@@ -18,6 +18,8 @@ import Favorites from "../screens/home/Favorites";
 import DetailOrder from "../screens/detail_order/DetailOrder";
 import Customers from "../screens/customers/Customers";
 import TambahCustomer from "../screens/customers/TambahCustomer";
+import Diskon from "../screens/diskon/Diskon";
+import Kasir from "../screens/home/Kasir";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -48,6 +50,15 @@ const HomeTabs = () => {
         options={{
           tabBarIcon: ({ color, size }) => {
             return <Ionicons name="star" size={size} color={color} />;
+          },
+        }}
+      />
+      <Tab.Screen
+        name="Kasir"
+        component={Kasir}
+        options={{
+          tabBarIcon: ({ color, size }) => {
+            return <Ionicons name="calculator" size={size} color={color} />;
           },
         }}
       />
@@ -117,6 +128,7 @@ export default RootNavigation = () => {
           <Stack.Screen name="Customers" component={Customers} />
           <Stack.Screen name="TambahCustomer" component={TambahCustomer} />
         </Stack.Group>
+        <Stack.Screen name="Diskon" component={Diskon} />
       </Stack.Navigator>
     </NavigationContainer>
   );

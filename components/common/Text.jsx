@@ -34,14 +34,17 @@ export const TextRegular = ({ text, style = null }) => {
   );
 };
 
-export const TextBoldPrimary = ({ text }) => {
+export const TextBoldPrimary = ({ text, style = null }) => {
   return (
     <Text
-      style={{
-        fontSize: SIZES.xLarge,
-        color: COLORS.TEXT_PRIMARY,
-        fontFamily: FONT.regular,
-      }}
+      style={[
+        {
+          fontSize: SIZES.xLarge,
+          color: COLORS.TEXT_PRIMARY,
+          fontFamily: FONT.regular,
+        },
+        style,
+      ]}
     >
       {text}
     </Text>

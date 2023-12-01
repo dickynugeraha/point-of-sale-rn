@@ -1,5 +1,12 @@
 import React from "react";
-import { Image, StyleSheet, View, Text, Dimensions, ScrollView } from "react-native";
+import {
+  Image,
+  StyleSheet,
+  View,
+  Text,
+  Dimensions,
+  ScrollView,
+} from "react-native";
 import * as SecureStore from "expo-secure-store";
 import { TextBoldPrimary, TextRegular } from "../../components/common/Text";
 import { COLORS, SIZES, images } from "../../styles";
@@ -9,16 +16,16 @@ import { FieldButton } from "../../components/common/Button";
 const widthDevice = Dimensions.get("window").width;
 
 const WelcomeScreen = ({ navigation }) => {
-  // React.useEffect(() => {
-  //   const getTokenAvailable = async () => {
-  //     const token = await SecureStore.getItemAsync("TOKEN");
-  //     console.log(token);
-  //     if (token?.length !== 0) {
-  //       return navigation.replace("Home");
-  //     }
-  //   };
-  //   getTokenAvailable();
-  // }, []);
+  React.useEffect(() => {
+    const getTokenAvailable = async () => {
+      const token = await SecureStore.getItemAsync("TOKEN");
+      console.log(token);
+      if (token?.length !== 0) {
+        return navigation.replace("Home");
+      }
+    };
+    getTokenAvailable();
+  }, []);
 
   return (
     <ScrollView style={styles.container}>
@@ -50,18 +57,20 @@ const WelcomeScreen = ({ navigation }) => {
           style={{ marginVertical: SIZES.small }}
         />
         <TextRegular text={"Atau"} style={{ textAlign: "center" }} />
-        <FieldButton
-          onPress={() => navigation.navigate("LoginOwner")}
-          icon={icons.person}
-          title={"Masuk sebagai owner"}
-          style={{ marginTop: SIZES.small }}
-        />
-        <FieldButton
-          onPress={() => navigation.navigate("LoginKaryawan")}
-          icon={icons.persons}
-          title={"Masuk sebagai karyawan"}
-          style={{ marginTop: SIZES.small }}
-        />
+        <View style={{ flexDirection: "row" }}>
+          <FieldButton
+            onPress={() => navigation.navigate("LoginOwner")}
+            icon={icons.person}
+            title={"Masuk sebagai owner"}
+            style={{ marginTop: SIZES.small, flex: 1, marginRight: 5 }}
+          />
+          <FieldButton
+            onPress={() => navigation.navigate("LoginKaryawan")}
+            icon={icons.persons}
+            title={"Masuk sebagai karyawan"}
+            style={{ marginTop: SIZES.small, flex: 1, marginLeft: 5 }}
+          />
+        </View>
       </View>
     </ScrollView>
   );

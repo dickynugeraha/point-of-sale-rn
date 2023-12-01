@@ -46,15 +46,11 @@ const LoginOwner = ({ navigation }) => {
 
   const submitHandler = async () => {
     if (!validateInput()) return;
-
-        console.log(emailNoTelp);
-        console.log(password);
     const response = await API.onLoginOwner({
       email: emailNoTelp,
       password: password,
     });
-    console.log(response);
-    return;
+
     if (response?.data?.success === true) {
       // await ScureStore.setItemAsync("TOKEN", response.data.data.token);
       if (response.data.data.data.is_have_outlet == 1) {
