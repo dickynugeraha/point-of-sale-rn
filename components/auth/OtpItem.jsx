@@ -16,7 +16,7 @@ const OtpItem = ({ icon, text, choosen, item }) => {
         />
       )}
 
-      <Text style={styles.text(choosen, item)}>{text}</Text>
+      <Text style={styles.text(icon, choosen, item)}>{text}</Text>
     </View>
   );
 };
@@ -30,7 +30,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
   }),
-  text: (choosen, item) => ({
+  text: (icon, choosen, item) => ({
+    marginLeft: icon && 8,
     color: choosen === item ? COLORS.WHITE : COLORS.GREY,
   }),
 });

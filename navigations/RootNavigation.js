@@ -3,8 +3,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useFonts } from "expo-font";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-
 import { COLORS, SIZES } from "../styles";
+
 import WelcomeScreen from "../screens/welcome/WelcomeScreen";
 import Daftar from "../screens/auth/Daftar";
 import LoginOwner from "../screens/auth/LoginOwner";
@@ -16,6 +16,8 @@ import Dashboard from "../screens/home/Dashboard";
 import { Ionicons } from "@expo/vector-icons";
 import Favorites from "../screens/home/Favorites";
 import DetailOrder from "../screens/detail_order/DetailOrder";
+import Customers from "../screens/customers/Customers";
+import TambahCustomer from "../screens/customers/TambahCustomer";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -111,6 +113,10 @@ export default RootNavigation = () => {
           />
         </Stack.Group>
         <Stack.Screen name="DetailOrder" component={DetailOrder} />
+        <Stack.Group>
+          <Stack.Screen name="Customers" component={Customers} />
+          <Stack.Screen name="TambahCustomer" component={TambahCustomer} />
+        </Stack.Group>
       </Stack.Navigator>
     </NavigationContainer>
   );
