@@ -18,7 +18,7 @@ export default {
         return error;
       });
   },
-  onLoginOwner: async () => {
+  onLoginOwner: async (body) => {
     return axios({
       method: "post",
       url: `${BASE_URL}/login`,

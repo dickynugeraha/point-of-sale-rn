@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, StyleSheet, View, Text, Dimensions } from "react-native";
+import { Image, StyleSheet, View, Text, Dimensions, ScrollView } from "react-native";
 import * as SecureStore from "expo-secure-store";
 import { TextBoldPrimary, TextRegular } from "../../components/common/Text";
 import { COLORS, SIZES, images } from "../../styles";
@@ -9,19 +9,19 @@ import { FieldButton } from "../../components/common/Button";
 const widthDevice = Dimensions.get("window").width;
 
 const WelcomeScreen = ({ navigation }) => {
-  React.useEffect(() => {
-    const getTokenAvailable = async () => {
-      const token = await SecureStore.getItemAsync("TOKEN");
-      console.log(token);
-      if (token?.length !== 0) {
-        return navigation.replace("Home");
-      }
-    };
-    getTokenAvailable();
-  }, []);
+  // React.useEffect(() => {
+  //   const getTokenAvailable = async () => {
+  //     const token = await SecureStore.getItemAsync("TOKEN");
+  //     console.log(token);
+  //     if (token?.length !== 0) {
+  //       return navigation.replace("Home");
+  //     }
+  //   };
+  //   getTokenAvailable();
+  // }, []);
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={styles.boxHeader}>
         <Image
           resizeMode="contain"
@@ -63,7 +63,7 @@ const WelcomeScreen = ({ navigation }) => {
           style={{ marginTop: SIZES.small }}
         />
       </View>
-    </View>
+    </ScrollView>
   );
 };
 

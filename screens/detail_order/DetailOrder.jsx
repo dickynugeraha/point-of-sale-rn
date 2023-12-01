@@ -45,7 +45,7 @@ const DetailOrder = ({ navigation }) => {
             )}
           />
         </View>
-        <View style={{ marginTop: SIZES.small, maxHeight: deviceHight * 0.5 }}>
+        <View style={{ marginTop: SIZES.small, maxHeight: deviceHight * 0.4 }}>
           <OrderList dataOrder={dataOrder} />
         </View>
         <Pressable
