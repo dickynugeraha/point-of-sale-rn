@@ -31,8 +31,8 @@ const TambahVariasiHarga = ({ navigation }) => {
         style={{ fontWeight: "bold", fontSize: SIZES.large }}
       />
       <Input
-        text={namaVariasiHarga}
-        setText={setNamaVariasiHarga}
+        value={namaVariasiHarga}
+        setValue={setNamaVariasiHarga}
         placeholder={"Nama variasi harga"}
         title={"Nama variasi harga"}
       />

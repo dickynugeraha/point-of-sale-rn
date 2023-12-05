@@ -2,14 +2,14 @@ import { View, TextInput, StyleSheet } from "react-native";
 import { TextRegular } from "./Text";
 import { COLORS, SIZES } from "../../styles";
 
-export default Input = ({ title, placeholder, text, setText, attribute }) => {
+export default Input = ({ title, placeholder, value, setValue, attribute }) => {
   return (
     <View style={styles.container}>
       <TextRegular text={title} />
       <TextInput
         placeholder={placeholder}
-        value={text}
-        onChangeText={(val) => setText(val)}
+        value={value}
+        onChangeText={(val) => setValue(val)}
         style={styles.input}
         selectionColor={COLORS.GREY_2}
         {...attribute}

@@ -19,14 +19,14 @@ const LoginKaryawan = () => {
         <Input
           placeholder={"Kode kasir"}
           title={"Kode kasir"}
-          text={kodeKasir}
-          setText={setKodeKasir}
+          value={kodeKasir}
+          setValue={setKodeKasir}
         />
         <Input
           placeholder={"Password"}
           title={"Password"}
-          text={password}
-          setText={setPassword}
+          value={password}
+          setValue={setPassword}
           attribute={{
             secureTextEntry: true,
           }}

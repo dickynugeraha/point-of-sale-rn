@@ -31,8 +31,8 @@ const TambahKategori = ({ navigation }) => {
         style={{ fontWeight: "bold", fontSize: SIZES.large }}
       />
       <Input
-        text={categoryName}
-        setText={setCategoryName}
+        value={categoryName}
+        setValue={setCategoryName}
         placeholder={"Nama kategori"}
         title={"Nama kategori"}
       />

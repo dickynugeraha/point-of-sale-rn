@@ -61,8 +61,8 @@ const Daftar = ({ navigation }) => {
         <Input
           placeholder={"Email"}
           title={"Email"}
-          text={email}
-          setText={setEmail}
+          value={email}
+          setValue={setEmail}
           attribute={{
             keyboardType: "email-address",
           }}
@@ -70,14 +70,14 @@ const Daftar = ({ navigation }) => {
         <Input
           placeholder={"Nama lengkap"}
           title={"Nama lengkap"}
-          text={namaLengkap}
-          setText={setNamaLengkap}
+          value={namaLengkap}
+          setValue={setNamaLengkap}
         />
         <Input
           placeholder={"Nomor whatsapp"}
           title={"Nomor whatsapp"}
-          text={noWa}
-          setText={setNoWa}
+          value={noWa}
+          setValue={setNoWa}
           attribute={{
             keyboardType: "number-pad",
           }}
@@ -85,8 +85,8 @@ const Daftar = ({ navigation }) => {
         <Input
           placeholder={"Password"}
           title={"Password"}
-          text={password}
-          setText={setPassword}
+          value={password}
+          setValue={setPassword}
           attribute={{
             secureTextEntry: true,
           }}

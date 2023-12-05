@@ -11,11 +11,11 @@ const Dashboard = ({ navigation }) => {
       headerBackVisible: false,
     });
   }, [navigation]);
+
   return (
     <View
       style={{
         flex: 1,
-        // paddingBottom: 55,
       }}
     >
       <CardList />

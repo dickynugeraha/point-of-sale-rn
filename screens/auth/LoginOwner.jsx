@@ -73,14 +73,14 @@ const LoginOwner = ({ navigation }) => {
         <Input
           placeholder={"Email atau no telepon"}
           title={"Email atau no telepon"}
-          text={emailNoTelp}
-          setText={setEmailNoTelp}
+          value={emailNoTelp}
+          setValue={setEmailNoTelp}
         />
         <Input
           placeholder={"Password"}
           title={"Password"}
-          text={password}
-          setText={setPassword}
+          value={password}
+          setValue={setPassword}
           attribute={{
             secureTextEntry: true,
           }}

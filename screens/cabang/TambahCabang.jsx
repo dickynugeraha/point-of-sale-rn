@@ -48,14 +48,14 @@ const TambahCabang = ({ navigation }) => {
         style={{ fontWeight: "bold", fontSize: SIZES.large }}
       />
       <Input
-        text={namaCabang}
-        setText={setNamaCabang}
+        value={namaCabang}
+        setValue={setNamaCabang}
         placeholder={"Nama cabang"}
         title={"Nama cabang"}
       />
       <Input
-        text={alamat}
-        setText={setAlamat}
+        value={alamat}
+        setValue={setAlamat}
         placeholder={"Alamat cabang"}
         title={"Alamat cabang"}
         attribute={{
@@ -64,8 +64,8 @@ const TambahCabang = ({ navigation }) => {
         }}
       />
       <Input
-        text={noWa}
-        setText={setNoWa}
+        value={noWa}
+        setValue={setNoWa}
         placeholder={"Nomor whatsapp cabang"}
         title={"Nomor whatsapp cabang"}
         attribute={{
