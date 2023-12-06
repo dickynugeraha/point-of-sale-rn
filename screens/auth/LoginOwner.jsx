@@ -36,6 +36,7 @@ const LoginOwner = ({ navigation }) => {
   const [emailNoTelp, setEmailNoTelp] = useState("");
   const [password, setPassword] = useState("");
   const [choosenOtp, setChoosenOtp] = useState("Email");
+  const [isLoading, setIsLoading] = useState(false);
 
   const validateInput = () => {
     if (emailNoTelp.length === 0 || password.length === 0) {
@@ -46,11 +47,12 @@ const LoginOwner = ({ navigation }) => {
 
   const submitHandler = async () => {
     if (!validateInput()) return;
+    setIsLoading(true);
     const response = await API.onLoginOwner({
       email: emailNoTelp,
       password: password,
     });
-
+    setIsLoading(false);
     if (response?.data?.success === true) {
       // await ScureStore.setItemAsync("TOKEN", response.data.data.token);
       if (response.data.data.data.is_have_outlet == 1) {
@@ -69,46 +71,47 @@ const LoginOwner = ({ navigation }) => {
       style={{ flex: 1, padding: SIZES.medium }}
       showsverticalscrollindicator={false}
     >
-      <View>
-        <Input
-          placeholder={"Email atau no telepon"}
-          title={"Email atau no telepon"}
-          value={emailNoTelp}
-          setValue={setEmailNoTelp}
-        />
-        <Input
-          placeholder={"Password"}
-          title={"Password"}
-          value={password}
-          setValue={setPassword}
-          attribute={{
-            secureTextEntry: true,
-          }}
-        />
-        <View style={{ marginTop: SIZES.xSmall }}>
-          <TextRegular text={"Send OTP"} style={{ fontWeight: "bold" }} />
-          <View style={{ marginTop: SIZES.small }}>
-            <FlatList
-              horizontal
-              showsHorizontalScrollIndicator={false}
-              data={otpItem}
-              keyExtractor={(_, index) => index}
-              renderItem={({ item }) => (
-                <Pressable onPress={() => setChoosenOtp(item.name)}>
-                  <OtpItem
-                    item={item.name}
-                    choosen={choosenOtp}
-                    text={item.name}
-                    icon={item.icon}
-                  />
-                </Pressable>
-              )}
-            />
-          </View>
+      <Input
+        placeholder={"Email atau no telepon"}
+        title={"Email atau no telepon"}
+        value={emailNoTelp}
+        setValue={setEmailNoTelp}
+      />
+      <Input
+        placeholder={"Password"}
+        title={"Password"}
+        value={password}
+        setValue={setPassword}
+        attribute={{
+          secureTextEntry: true,
+        }}
+      />
+      <View style={{ marginTop: SIZES.xSmall }}>
+        <TextRegular text={"Send OTP"} style={{ fontWeight: "bold" }} />
+        <View style={{ marginTop: SIZES.small }}>
+          <FlatList
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            data={otpItem}
+            keyExtractor={(_, index) => index}
+            renderItem={({ item }) => (
+              <Pressable onPress={() => setChoosenOtp(item.name)}>
+                <OtpItem
+                  item={item.name}
+                  choosen={choosenOtp}
+                  text={item.name}
+                  icon={item.icon}
+                />
+              </Pressable>
+            )}
+          />
         </View>
       </View>
       <View style={{ marginVertical: SIZES.large }}>
-        <FieldButton title={"Masuk"} onPress={submitHandler} />
+        <FieldButton
+          title={isLoading ? "Loading..." : "Masuk"}
+          onPress={isLoading ? null : submitHandler}
+        />
         <FlatUnderlineButton text={"Forgot password?"} isUnderline={true} />
       </View>
     </KeyboardAwareScrollView>

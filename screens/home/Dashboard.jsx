@@ -1,16 +1,43 @@
-import React, { useLayoutEffect } from "react";
-import { View } from "react-native";
+import React, { useEffect, useLayoutEffect } from "react";
+import { Alert, BackHandler, View } from "react-native";
 import CardList from "../../components/home/card/CardList";
 import { SIZES } from "../../styles";
 import InfoCart from "../../components/home/info_cart/InfoCart";
-import { Ionicons } from "@expo/vector-icons";
+import { useFocusEffect } from "@react-navigation/native";
 
-const Dashboard = ({ navigation }) => {
+const Dashboard = ({ navigation, route }) => {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerBackVisible: false,
     });
   }, [navigation]);
+
+  useFocusEffect(
+    React.useCallback(() => {
+      const onBackPress = () => {
+        if (route.name === "Dashboard") {
+          Alert.alert("Hold on!", "Are you sure you want to go back?", [
+            {
+              text: "Cancel",
+              onPress: () => null,
+              style: "cancel",
+            },
+            { text: "YES", onPress: () => BackHandler.exitApp() },
+          ]);
+          return true;
+        } else {
+          return false;
+        }
+      };
+
+      const subscription = BackHandler.addEventListener(
+        "hardwareBackPress",
+        onBackPress
+      );
+
+      return () => subscription.remove();
+    }, [])
+  );
 
   return (
     <View

@@ -4,7 +4,10 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import { TextRegular } from "../../components/common/Text";
 import { SIZES } from "../../styles";
 import Input from "../../components/common/Input";
-import { FieldButton } from "../../components/common/Button";
+import {
+  FieldButton,
+  FlatUnderlineButton,
+} from "../../components/common/Button";
 import API from "../../apis/apisProvider";
 
 const TambahCabang = ({ navigation }) => {
@@ -72,8 +75,16 @@ const TambahCabang = ({ navigation }) => {
           keyboardType: "number-pad",
         }}
       />
-      <View style={{ marginVertical: SIZES.medium }}>
-        <FieldButton title={"Tambah cabang"} onPress={submitHandler} />
+      <View style={{ marginVertical: SIZES.small, alignItems: "flex-end" }}>
+        <FieldButton
+          title={"Tambah cabang"}
+          onPress={submitHandler}
+          style={{ width: "100%" }}
+        />
+        <FlatUnderlineButton
+          text={"Skip"}
+          onPress={() => navigation.navigate("Home")}
+        />
       </View>
     </KeyboardAwareScrollView>
   );

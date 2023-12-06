@@ -4,10 +4,10 @@ import { TextRegular } from "../common/Text";
 import { Ionicons } from "@expo/vector-icons";
 import { COLORS, SIZES } from "../../styles";
 
-const CustomerList = ({ data }) => {
+const CustomerList = ({ data, onPress }) => {
   const CustomerItem = (item) => {
     return (
-      <TouchableOpacity style={styles.boxCustomerItem}>
+      <TouchableOpacity style={styles.boxCustomerItem} onPress={onPress}>
         <TextRegular text="Customer" />
         <Ionicons name="arrow-forward" size={20} />
       </TouchableOpacity>

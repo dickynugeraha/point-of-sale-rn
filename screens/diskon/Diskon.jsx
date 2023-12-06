@@ -16,7 +16,7 @@ data = [
   },
 ];
 
-const Diskon = () => {
+const Diskon = ({ navigation }) => {
   return (
     <View style={{ flex: 1, padding: SIZES.medium }}>
       <FlatList
@@ -27,6 +27,7 @@ const Diskon = () => {
             desc={item.desc}
             title={item.title}
             percentage={item.percentage}
+            onPress={() => navigation.goBack()}
           />
         )}
       />

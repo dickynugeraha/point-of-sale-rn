@@ -4,9 +4,9 @@ import { StyleSheet, TouchableOpacity } from "react-native";
 import { TextBoldPrimary, TextRegular } from "../common/Text";
 import { COLORS, SIZES } from "../../styles";
 
-const DiskonItem = ({ title, percentage, desc }) => {
+const DiskonItem = ({ title, percentage, desc, onPress }) => {
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={onPress}>
       <LinearGradient
         colors={["#1c59bd", "#abcbff"]}
         start={[0.1, 0.1]}

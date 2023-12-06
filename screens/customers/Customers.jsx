@@ -23,7 +23,7 @@ const Customers = ({ navigation }) => {
         onPress={searchSubmitHandler}
       />
       <View style={{ flex: 1, padding: SIZES.medium }}>
-        <CustomerList data={data} />
+        <CustomerList data={data} onPress={() => navigation.goBack()} />
         <FieldButton
           title={"Tambah customer"}
           onPress={() => navigation.navigate("TambahCustomer")}
