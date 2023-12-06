@@ -6,16 +6,16 @@ import InfoCart from "../../components/home/info_cart/InfoCart";
 import { useFocusEffect } from "@react-navigation/native";
 
 const Dashboard = ({ navigation, route }) => {
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      headerBackVisible: false,
-    });
-  }, [navigation]);
+  // useLayoutEffect(() => {
+  //   navigation.setOptions({
+  //     headerBackVisible: false,
+  //   });
+  // }, [navigation]);
 
   useFocusEffect(
     React.useCallback(() => {
       const onBackPress = () => {
-        if (route.name === "Dashboard") {
+        if (route.name === "Dashboard" || route.name === "Welcome") {
           Alert.alert("Hold on!", "Are you sure you want to go back?", [
             {
               text: "Cancel",

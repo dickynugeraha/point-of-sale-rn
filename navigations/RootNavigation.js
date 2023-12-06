@@ -1,10 +1,11 @@
-import { ActivityIndicator } from "react-native";
+import { ActivityIndicator, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useFonts } from "expo-font";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { COLORS, SIZES } from "../styles";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 
+import { COLORS, SIZES } from "../styles";
 import WelcomeScreen from "../screens/welcome/WelcomeScreen";
 import Daftar from "../screens/auth/Daftar";
 import LoginOwner from "../screens/auth/LoginOwner";
@@ -20,7 +21,10 @@ import Customers from "../screens/customers/Customers";
 import TambahCustomer from "../screens/customers/TambahCustomer";
 import Diskon from "../screens/diskon/Diskon";
 import Kasir from "../screens/home/Kasir";
+import HistoryTransaction from "../screens/history_transaction/HistoryTransaction";
+import Account from "../screens/account/Account";
 
+const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 const styleHeader = {
@@ -32,6 +36,45 @@ const styleHeader = {
   headerTintColor: COLORS.TEXT_PRIMARY,
 };
 
+const MainDrawer = () => {
+  return (
+    <Drawer.Navigator
+      screenOptions={{
+        tabBarShowLabel: false,
+        ...styleHeader,
+      }}
+    >
+      <Drawer.Screen
+        name="Kasir"
+        component={HomeTabs}
+        options={{
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name="calculator" color={color} size={size} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="HistoryTransaction"
+        component={HistoryTransaction}
+        options={{
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name="time-outline" color={color} size={size} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="Akun"
+        component={Account}
+        options={{
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name="person-outline" color={color} size={size} />
+          ),
+        }}
+      />
+    </Drawer.Navigator>
+  );
+};
+
 const HomeTabs = () => {
   return (
     <Tab.Navigator screenOptions={{ tabBarShowLabel: false, ...styleHeader }}>
@@ -39,6 +82,7 @@ const HomeTabs = () => {
         name="Dashboard"
         component={Dashboard}
         options={{
+          headerShown: false,
           tabBarIcon: ({ color, size }) => {
             return <Ionicons name="home" size={size} color={color} />;
           },
@@ -48,17 +92,19 @@ const HomeTabs = () => {
         name="Favorites"
         component={Favorites}
         options={{
+          headerShown: false,
           tabBarIcon: ({ color, size }) => {
             return <Ionicons name="star" size={size} color={color} />;
           },
         }}
       />
       <Tab.Screen
-        name="Kasir"
+        name="AddNewMenu"
         component={Kasir}
         options={{
+          headerShown: false,
           tabBarIcon: ({ color, size }) => {
-            return <Ionicons name="calculator" size={size} color={color} />;
+            return <Ionicons name="add-circle" size={size} color={color} />;
           },
         }}
       />
@@ -74,7 +120,11 @@ export default RootNavigation = () => {
   });
 
   if (!fontLoaded) {
-    return <ActivityIndicator color="blue" size={SIZES.xLarge} />;
+    return (
+      <View style={{ justifyContent: "center", alignItems: "center" }}>
+        <ActivityIndicator color="blue" size={SIZES.xLarge} />
+      </View>
+    );
   }
 
   return (
@@ -117,7 +167,7 @@ export default RootNavigation = () => {
         <Stack.Group>
           <Stack.Screen
             name="Home"
-            component={HomeTabs}
+            component={MainDrawer}
             options={{
               headerShown: false,
             }}

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { BASE_URL } from "./constant";
+import * as SecureStorage from "expo-secure-store";
 // import API from "./config";
 
 export default {
