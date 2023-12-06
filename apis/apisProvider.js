@@ -42,4 +42,16 @@ export default {
       .then((response) => response.data)
       .catch((error) => error.response);
   },
+  // Products
+  getAllProducts: async (token) => {
+    return axios({
+      method: "get",
+      url: `${BASE_URL}/products`,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => response.data)
+      .catch((error) => error.response);
+  },
 };

@@ -54,7 +54,7 @@ const LoginOwner = ({ navigation }) => {
     });
     setIsLoading(false);
     if (response?.data?.success === true) {
-      // await ScureStore.setItemAsync("TOKEN", response.data.data.token);
+      await ScureStore.setItemAsync("TOKEN", response.data.data.token);
       if (response.data.data.data.is_have_outlet == 1) {
         navigation.replace("Products");
       } else {
