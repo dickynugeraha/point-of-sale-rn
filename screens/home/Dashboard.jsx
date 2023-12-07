@@ -27,7 +27,7 @@ const Dashboard = ({ navigation, route }) => {
 
   useEffect(() => {
     fetchData();
-  }, [navigation, fetchData]);
+  }, []);
 
   useFocusEffect(
     React.useCallback(() => {
@@ -70,7 +70,12 @@ const Dashboard = ({ navigation, route }) => {
         </View>
       ) : (
         <>
-          <CardList />
+          {/* <CardList /> */}
+          <CardList
+            onRefresh={fetchData}
+            isLoading={isLoading}
+            data={dataProds}
+          />
           <View style={{ marginHorizontal: SIZES.large }}>
             <InfoCart onPress={() => navigation.navigate("DetailOrder")} />
           </View>

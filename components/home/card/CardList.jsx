@@ -1,18 +1,29 @@
 import React from "react";
-import { FlatList, Text, View } from "react-native";
+import { FlatList, RefreshControl, View } from "react-native";
 import CardItem from "./CardItem";
 import { SIZES } from "../../../styles";
 import HeaderDashboard from "../header/HeaderDashboard";
 
-const CardList = () => {
-  const data = [1, 2, 3, 3, 3, 3, 3, 3];
+const CardList = ({ onRefresh, isLoading, data }) => {
+  const dataDummy = [1, 2, 3];
 
   return (
     <FlatList
       data={data}
-      keyExtractor={(item, index) => index.toString()}
+      refreshControl={
+        <RefreshControl refreshing={isLoading} onRefresh={onRefresh} />
+      }
+      keyExtractor={(_, index) => index.toString()}
       numColumns={2}
-      renderItem={(item) => <CardItem />}
+      renderItem={({ item }) => {
+        return (
+          <CardItem
+            name={item.name}
+            sellingPrice={item.selling_price}
+            image={item.photo}
+          />
+        );
+      }}
       showsVerticalScrollIndicator={false}
       ListHeaderComponent={() => <HeaderDashboard />}
       ListFooterComponent={() => <View style={{ height: 65 }}></View>}

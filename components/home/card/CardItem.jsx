@@ -3,20 +3,25 @@ import { Dimensions, Image, StyleSheet, View } from "react-native";
 import { TextRegular, TextSmall } from "../../common/Text";
 import { FieldButton, IconButton } from "../../common/Button";
 import { COLORS, SIZES, images, SHADOWS } from "../../../styles";
+import { BASE_URL_IMAGE } from "../../../apis/constant";
 
-const deviceWidth = Dimensions.get("window").width;
 const deviceHeight = Dimensions.get("window").height;
 
-const CardItem = () => {
+const CardItem = ({ name, sellingPrice, image }) => {
   return (
     <View style={styles.container}>
-      <Image source={images.prods} style={styles.boxImage} resizeMode="cover" />
+      <Image
+        source={images.prod}
+        // source={`${BASE_URL_IMAGE}/${image}`}
+        style={styles.boxImage}
+        resizeMode="cover"
+      />
       <View style={styles.boxDesc}>
-        <TextRegular text={"Salad Tuna"} />
-        <TextSmall text={"Must choose level"} />
+        <TextRegular text={name} />
+        <TextSmall text={name} />
         <View style={styles.boxPrice}>
           <TextRegular
-            text={"Rp. 10.000"}
+            text={`Rp. ${sellingPrice}`}
             style={{ color: COLORS.TEXT_PRIMARY, fontWeight: "bold" }}
           />
           <IconButton

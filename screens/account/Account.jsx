@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import * as SecureStorage from "expo-secure-store";
 import { StackActions } from "@react-navigation/native";
 
