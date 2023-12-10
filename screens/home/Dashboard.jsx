@@ -16,12 +16,14 @@ const Dashboard = ({ navigation, route }) => {
   // }, [navigation]);
 
   const [dataProds, setDataProds] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const fetchData = async () => {
     const token = await SecureStorage.getItemAsync("TOKEN");
     const response = await API.getAllProducts(token);
-    setDataProds(response.data);
+    if (response?.data.length > 0) {
+      setDataProds(response.data);
+    }
     setIsLoading(false);
   };
 

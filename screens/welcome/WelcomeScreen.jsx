@@ -16,16 +16,16 @@ import { FieldButton } from "../../components/common/Button";
 const widthDevice = Dimensions.get("window").width;
 
 const WelcomeScreen = ({ navigation }) => {
-  // React.useEffect(() => {
-  //   const getTokenAvailable = async () => {
-  //     const token = await SecureStore.deleteItemAsync("TOKEN");
-  //     console.log(token);
-  //     if (token?.length !== 0) {
-  //       return navigation.replace("Home");
-  //     }
-  //   };
-  //   getTokenAvailable();
-  // }, []);
+  React.useEffect(() => {
+    const getTokenAvailable = async () => {
+      const token = await SecureStore.getItemAsync("TOKEN");
+      console.log(token);
+      if (token !== null) {
+        return navigation.replace("Home");
+      }
+    };
+    getTokenAvailable();
+  }, []);
 
   return (
     <ScrollView style={styles.container}>

@@ -1,27 +1,41 @@
-import React from "react";
-import { Dimensions, Image, StyleSheet, View } from "react-native";
+import React, { useState } from "react";
+import {
+  Dimensions,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { TextRegular, TextSmall } from "../../common/Text";
-import { FieldButton, IconButton } from "../../common/Button";
-import { COLORS, SIZES, images, SHADOWS } from "../../../styles";
+import { IconButton } from "../../common/Button";
+import { COLORS, SIZES, SHADOWS } from "../../../styles";
 import { BASE_URL_IMAGE } from "../../../apis/constant";
+import DetailProduct from "../detail_product/DetailProduct";
 
 const deviceHeight = Dimensions.get("window").height;
 
-const CardItem = ({ name, sellingPrice, image }) => {
+const CardItem = ({ prod }) => {
+  const [isVisibleModal, setIsVisibleModal] = useState(false);
+
   return (
-    <View style={styles.container}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() => setIsVisibleModal(true)}
+    >
+      <DetailProduct
+        isVisible={isVisibleModal}
+        setIsVisible={setIsVisibleModal}
+      />
       <Image
-        source={images.prod}
-        // source={`${BASE_URL_IMAGE}/${image}`}
+        source={`${BASE_URL_IMAGE}/${prod.photo}`}
         style={styles.boxImage}
         resizeMode="cover"
       />
       <View style={styles.boxDesc}>
-        <TextRegular text={name} />
-        <TextSmall text={name} />
+        <TextRegular text={prod.name} />
         <View style={styles.boxPrice}>
           <TextRegular
-            text={`Rp. ${sellingPrice}`}
+            text={`Rp. ${prod.selling_price}`}
             style={{ color: COLORS.TEXT_PRIMARY, fontWeight: "bold" }}
           />
           <IconButton
@@ -36,7 +50,7 @@ const CardItem = ({ name, sellingPrice, image }) => {
           />
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

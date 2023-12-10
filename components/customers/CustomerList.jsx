@@ -1,14 +1,23 @@
 import React from "react";
-import { FlatList, StyleSheet, TouchableOpacity, View } from "react-native";
+import {
+  FlatList,
+  RefreshControl,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { TextRegular } from "../common/Text";
 import { Ionicons } from "@expo/vector-icons";
 import { COLORS, SIZES } from "../../styles";
 
-const CustomerList = ({ data, onPress }) => {
-  const CustomerItem = (item) => {
+const CustomerList = ({ data, onClickCustomer, isLoading, onRefresh }) => {
+  const CustomerItem = ({ item }) => {
     return (
-      <TouchableOpacity style={styles.boxCustomerItem} onPress={onPress}>
-        <TextRegular text="Customer" />
+      <TouchableOpacity
+        style={styles.boxCustomerItem}
+        onPress={onClickCustomer}
+      >
+        <TextRegular text={item.name} />
         <Ionicons name="arrow-forward" size={20} />
       </TouchableOpacity>
     );
@@ -18,8 +27,11 @@ const CustomerList = ({ data, onPress }) => {
     <View style={{ flex: 1 }}>
       <FlatList
         data={data}
-        renderItem={({ item }) => <CustomerItem />}
-        keyExtractor={(item, index) => index.toString()}
+        refreshControl={
+          <RefreshControl refreshing={isLoading} onRefresh={onRefresh} />
+        }
+        renderItem={({ item }) => <CustomerItem item={item} />}
+        keyExtractor={(_, index) => index.toString()}
         showsVerticalScrollIndicator={false}
       />
     </View>

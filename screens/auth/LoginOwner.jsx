@@ -47,6 +47,7 @@ const LoginOwner = ({ navigation }) => {
 
   const submitHandler = async () => {
     if (!validateInput()) return;
+
     setIsLoading(true);
     const response = await API.onLoginOwner({
       email: emailNoTelp,
@@ -60,8 +61,15 @@ const LoginOwner = ({ navigation }) => {
       } else {
         navigation.replace("TambahCabang");
       }
-    } else if (response?.response?.status === 400) {
-      ToastAndroid.show(response.response.data.message, ToastAndroid.BOTTOM);
+    } else if (
+      response?.response?.status === 400 ||
+      response?.response?.status === 404 ||
+      response?.response?.status === 401
+    ) {
+      ToastAndroid.show(
+        "Can't login, something went worng!",
+        ToastAndroid.BOTTOM
+      );
     }
   };
 

@@ -16,13 +16,7 @@ const CardList = ({ onRefresh, isLoading, data }) => {
       keyExtractor={(_, index) => index.toString()}
       numColumns={2}
       renderItem={({ item }) => {
-        return (
-          <CardItem
-            name={item.name}
-            sellingPrice={item.selling_price}
-            image={item.photo}
-          />
-        );
+        return <CardItem prod={item} />;
       }}
       showsVerticalScrollIndicator={false}
       ListHeaderComponent={() => <HeaderDashboard />}
