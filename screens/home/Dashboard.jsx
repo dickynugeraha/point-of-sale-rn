@@ -29,7 +29,7 @@ const Dashboard = ({ navigation, route }) => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [route.name]);
 
   useFocusEffect(
     React.useCallback(() => {

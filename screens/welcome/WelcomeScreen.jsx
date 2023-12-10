@@ -19,7 +19,6 @@ const WelcomeScreen = ({ navigation }) => {
   React.useEffect(() => {
     const getTokenAvailable = async () => {
       const token = await SecureStore.getItemAsync("TOKEN");
-      console.log(token);
       if (token !== null) {
         return navigation.replace("Home");
       }

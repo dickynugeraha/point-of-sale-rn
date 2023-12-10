@@ -6,7 +6,7 @@ export const TextSmall = ({ text, style = null }) => {
     <Text
       style={[
         {
-          fontSize: SIZES.small,
+          fontSize: 13,
           color: COLORS.GREY_2,
           fontFamily: FONT.regular,
         },

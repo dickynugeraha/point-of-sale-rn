@@ -12,6 +12,7 @@ import { TextRegular } from "../../components/common/Text";
 import API from "../../apis/apisProvider";
 import OtpItem from "../../components/auth/OtpItem";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import LoadingIndicator from "../../components/common/LoadingIndicator";
 
 const otpItem = [
   {
@@ -116,10 +117,15 @@ const LoginOwner = ({ navigation }) => {
         </View>
       </View>
       <View style={{ marginVertical: SIZES.large }}>
-        <FieldButton
-          title={isLoading ? "Loading..." : "Masuk"}
-          onPress={isLoading ? null : submitHandler}
-        />
+        {isLoading ? (
+          <LoadingIndicator />
+        ) : (
+          <FieldButton
+            title={"Masuk"}
+            onPress={isLoading ? null : submitHandler}
+          />
+        )}
+
         <FlatUnderlineButton text={"Forgot password?"} isUnderline={true} />
       </View>
     </KeyboardAwareScrollView>

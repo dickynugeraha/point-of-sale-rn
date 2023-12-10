@@ -6,9 +6,9 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { TextRegular, TextSmall } from "../../common/Text";
+import { TextRegular } from "../../common/Text";
 import { IconButton } from "../../common/Button";
-import { COLORS, SIZES, SHADOWS } from "../../../styles";
+import { COLORS, SIZES, SHADOWS, images } from "../../../styles";
 import { BASE_URL_IMAGE } from "../../../apis/constant";
 import DetailProduct from "../detail_product/DetailProduct";
 
@@ -22,16 +22,18 @@ const CardItem = ({ prod }) => {
       style={styles.container}
       onPress={() => setIsVisibleModal(true)}
     >
-      <DetailProduct
-        isVisible={isVisibleModal}
-        setIsVisible={setIsVisibleModal}
-      />
       <Image
-        source={`${BASE_URL_IMAGE}/${prod.photo}`}
+        source={images.prod}
+        // source={{ uri: `${BASE_URL_IMAGE}/${prod.photo}` }}
         style={styles.boxImage}
         resizeMode="cover"
       />
       <View style={styles.boxDesc}>
+        <DetailProduct
+          isVisible={isVisibleModal}
+          setIsVisible={setIsVisibleModal}
+          prod={prod}
+        />
         <TextRegular text={prod.name} />
         <View style={styles.boxPrice}>
           <TextRegular
